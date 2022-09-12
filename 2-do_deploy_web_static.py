@@ -3,6 +3,8 @@
 that distributes an archive to your web servers"""
 from fabric.api import env, run, put
 from os.path import exists
+
+
 env.hosts = ['23.22.162.227', '3.80.117.130']
 env.user = "ubuntu"
 
