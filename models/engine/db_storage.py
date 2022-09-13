@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""update db storage"""
 from models.base_model import BaseModel, Base
 from sqlalchemy import create_engine, MetaData
 from os import getenv
