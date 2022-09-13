@@ -36,16 +36,16 @@ class DBStorage:
         """Public instance method all"""
         dict_new = {}
 
-        if cls:
-            query = self.__session.query(cls).all()
-            for key, value in query.items():
-                dict_new[key] = value
+        if cls is None:
+            for obj in self.__session.query(City, State, User, Place,
+                                            Review, Amenity).all():
+                key = "{}.{}".format(type(obj).__name__, obj.id)
+                dict_new[key] = obj
         else:
-            for CLS in self.classes:
-                query = self.__session.query(CLS).all()
-                for key, value in query.items():
-                    dict_new[key] = value
-        return (dict_new)
+            for obj in self.__session.query(cls).all():
+                key = "{}.{}".format(cls.__name__, obj.id)
+                dict_new[key] = obj
+        return dict_new
 
     def new(self, obj):
         """Public instance method new"""
@@ -69,4 +69,4 @@ class DBStorage:
 
     def close(self):
         """method on the private session attribute"""
-        self.__session.remove()
+        self.__session.close()
