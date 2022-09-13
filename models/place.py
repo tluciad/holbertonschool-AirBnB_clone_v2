@@ -7,7 +7,8 @@ from sqlalchemy.orm import relationship
 from models.review import Review
 
 
-class Place(BaseModel, Base if (getenv('HBNB_TYPE_STORAGE') == "db") else object):
+class Place(BaseModel, Base if (getenv('HBNB_TYPE_STORAGE')
+                                == "db") else object):
     """ A place to stay """
     __tablename__ = 'places'
     if (getenv('HBNB_TYPE_STORAGE') == 'db'):
