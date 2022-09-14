@@ -7,7 +7,7 @@ from flask import render_template
 app = Flask(__name__)
 
 
-@app.route("/, strict_slashes=False")
+@app.route("/", strict_slashes=False)
 def hello_hbnb():
     """module hello HBNB"""
     return "Hello HBNB!"
